@@ -14,8 +14,8 @@ public class MoveKeywords {
 }
 
 abstract class Item{
-    String name;
-    int price;
+    protected String name;
+    protected int price;
     Item(String name, int price){
         this.name=name;
         this.price=price;
@@ -24,18 +24,18 @@ abstract class Item{
     Item(){
         this("이름 없음", -1);
     }
+
+    public String getName(){return name;}
+    public int getPrice() {return price;}
 }
 
 class Weapon extends Item{
-    int power;
+    protected int power;
     Weapon(String name, int price, int power){
         super(name, price);
         this.power = power;
     }
-    Weapon(){
-        super();
-        this.power = -1;
-    }
+    Weapon(){this("이름 없음", -1, -1);}
     void printInfo(){
         System.out.printf("[%s] 가격: %d 골드, 공격력: %d\n", super.name, super.price, this.power);
     }
